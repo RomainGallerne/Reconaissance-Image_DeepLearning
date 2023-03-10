@@ -1,0 +1,61 @@
+Projet : Séance 2 Zoom
+
+================
+
+1e etape : resize les images au format 124x124 en trois canneaux
+2e etape : parcours du repertoire des images, resize, transformation des images en matrice et attribution de la classe
+3e etape : On normalise les données entre 0 et 1 : niveau de gris/255
+	Selon les images, certaines sont plus facils à classer (caractéristiques bien reconaissables, trop ressemblant ?)
+4e etape : Modèle Baseline, très simple au début.
+	=> Modèle de reconaissance de base, peu performant mais servira de base et de valeurs minim pour le reste.
+	Padding : Permet d'insister sur les angles pour les images décentré
+	Stride : de combien de pixel avance-t-on ?
+	MaxPooling : Approximation des carrées de 2x2 en un seul pixel (celui de niveau max)
+	Transformation de la matrice en vecteur
+5e etape : K-fold
+	Le batch_size sert à n'envoyer qu'un certain nombre d'élément du jeu de donnée afin qu'il n'apprenne pas par coeur le jeu de donnée (favoriser les puissances de deux)
+	Plusieurs époques (nombre de fois où on fait tourner le jeu de test) avec à chaque fois le taux de réussite
+	On évalue ensuite le modèle.
+
+	Le sur-apprentissage se remarque par un écart entre la training-accuracy > Validation-accuracy
+	Le sous-apprentissage se remarque par un écart entre la training-accuracy < Validation-accuracy
+	=> On veut que les deux données soit les plus proches
+	La véritable accuracy du code se voit au moment de la séparation des deux courbes.
+
+	On peut alors jouer sur divers paramètres pour améliorer le tout :
+		- Réduire la batch_size
+		- Changer le nombre de filtres
+		- Changer la taille de la fenêtre
+		- Augmenter la taille du jeu de données
+		- Augmenter le nombre d'epoch
+		- ...
+
+	Si la courbe de Training ne descend pas assez vite, le learning rate est surement trop petit.
+	Si la courbe de Training descend trop vite puis remonte, le learning rate est trop élevé
+
++ tard, visualisation des données avec TensorBoard.
+================
+A faire :
+> Diagramme de Gant non linéaire pour le groupe **(1 personne)**
+> Convertion du modèle elephant en tigres/renard **(2 personnes)**
+> Complexifier le modèle **(2 personnes)**
+> Créer un overleaf partagé avec le rapport
+	1 intro + 1 conclusion / partie
+	3 parties :
+		- Classification d'image
+			- Explication Réseau de neuronnes
+			- Explication CNN
+		- 
+		- Génération d'images
+
+> Appliquer le modèle sur les tigres et les renards
+> Améliorer les modèles en les bidouillant
+	Noter les tests dans un fichier Excel (les différent param et les résultats obtenus)
+
+> Regarder les notes book sur les auto-encoder
+
+
+
+
+
+
